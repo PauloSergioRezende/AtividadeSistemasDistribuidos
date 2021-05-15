@@ -64,11 +64,12 @@ def run():
                     print("!!! ID não valido !!!")
             response = stub.ObtemPorID(helloworld_pb2.ObterCliID_Request(id=int(_id)))
         else:
+            _cpf=""
             while not _cpf.isdecimal():
                 _cpf = input("Digite um CPF por favor:")
                 if not _cpf.isdecimal():
                     print("!!! CPF não valido !!!")
-            response = stub.ObtemPorID(helloworld_pb2.ObterCliCPF_Request(cpf=_cpf))
+            response = stub.ObtemPorCpf(helloworld_pb2.ObterCliCPF_Request(cpf=int(_cpf)))
 
         if response.id == 0:
                 print("Não há Clientes com esse ID")
